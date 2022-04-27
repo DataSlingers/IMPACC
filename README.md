@@ -1,5 +1,5 @@
 # IMPACC
-## Summary
+
 `IMPACC` is a tool for unsupervised clustering and feature importance discovery. This document provides a tutorial of how to use `IMPACC`.
 
 ## Brief description of `IMPACC`
