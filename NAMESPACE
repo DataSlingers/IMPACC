@@ -1,0 +1,6 @@
+export(IMPACC,MPCC)
+importFrom("stats", "as.dist", "cor", "cutree", "dist", "hclust",
+               "na.omit", "pf", "quantile", "sd", "pchisq", "predict")
+import(mvtnorm)
+import(knitr)
+importFrom("nnet", "multinom")
