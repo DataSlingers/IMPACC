@@ -1,7 +1,7 @@
 Package: IMPACC
 Type: Package
 Title: Fast and Interpretable Consensus Clustering via Minipatch Learning
-Version: 0.1.0
+Version: 0.99.0
 Authors@R: person("Luqin", "Gan", email = "glq.gan@gmail.com",role = c("aut", "cre"))
 Description: This package provides powerful methodologies for consensus clustering using minipatch learning with random or adaptive schemes. The methods provide interpretability in terms of feature importance and are particularly applicable to sparse, high-dimensional data sets common in bioinformatics. 
 License: Artistic-2.0
