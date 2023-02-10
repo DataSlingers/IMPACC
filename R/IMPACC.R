@@ -343,6 +343,9 @@ IMPACC <-function(d=NULL,
 
 
 IMPACC_cluster <-function(css=NULL,K=NULL,finalAlgorithm='hclust',finalLinkage='ward.D'){
+    if (is.null(css)|is.null(K)){
+        return('Need inputs')
+    }else{
     return(tryCatch({
         if(finalAlgorithm=='hclust'){
             hc <-hclust(as.dist(1-css),method=finalLinkage)
@@ -355,7 +358,7 @@ IMPACC_cluster <-function(css=NULL,K=NULL,finalAlgorithm='hclust',finalLinkage='
         return(ct)
     }, error=function(e) NA))
 }
-
+}
 
 ######### HELPER FUNCTIONS
 sampleBurin <- function(d,num_partition,
