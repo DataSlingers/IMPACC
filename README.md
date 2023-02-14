@@ -41,23 +41,23 @@ impacc = IMPACC(d=yan$sc_cnt,K = K,reps = 100,verbose=FALSE)
 
 Users can run MPACC (Minipatch Adaptive Consensus Clustering) by simply setting `adaptiveFeature` as FALSE. 
 
-###  Construct different clustering results by passing the ConsensusMatrix argument to IMPACC_cluster() function 
+####  Construct different clustering results by passing the ConsensusMatrix argument to IMPACC_cluster() function 
 ```{r}
 clus = IMPACC_cluster(ConsensusMatrix = impacc$ConsensusMatrix,K = 3)
 ```
 
-###  Run MPACC with adaptive observation subsampling and random feature subsampling. 
+####  Run MPACC with adaptive observation subsampling and random feature subsampling. 
 ```{r}
 mpacc = IMPACC(d=yan$sc_cnt,K = K,adaptiveFeature = FALSE,verbose=FALSE)
 ```
 
 
-###  Run MPCC with random minipatch subsampling. 
+####  Run MPCC with random minipatch subsampling. 
 ```{r}
 mpcc = MPCC(d=yan$sc_cnt,K = K,verbose=FALSE)
 ```
 
-###  Run IMPACC with multinomial feature evaluation
+####  Run IMPACC with multinomial feature evaluation
 ```{r}
 impacc_multinomial = IMPACC(d=yan$sc_cnt,K = K,reps = 1,feature_evaluation = 'multinomial', verbose=FALSE)
 ```
