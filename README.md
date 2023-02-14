@@ -18,9 +18,9 @@ Gan, Luqin, and Genevera I. Allen. "Fast and Interpretable Consensus Clustering 
 
 
 
-# Tutorial 
+## Tutorial 
 
-## Data Input
+###  Data Input
 The input data format needs to be a matrix where columns are observations, rows are features, and cells are numerical values. If your input data is single-cell RNA-seq data, it needs to be normalized to achieve optimal results. 
 ```{r, message=FALSE, warning=FALSE}
 library(IMPACC)
@@ -32,7 +32,7 @@ K = length(unique(yan$sc_label))
 ```
 The `yan` list contains three components: `raw` is gene expression count matrix before log2 transformation; `sc_cnt` is the log2 transformed gene expression matrix; and `sc_label` correspond to the cell labels provided by authors of the original publication. 
 
-## Run IMPACC
+### Run IMPACC
 ```{r}
 impacc = IMPACC(d=yan$sc_cnt,K = K,reps = 100,verbose=FALSE)
 ```
@@ -41,23 +41,23 @@ impacc = IMPACC(d=yan$sc_cnt,K = K,reps = 100,verbose=FALSE)
 
 Users can run MPACC (Minipatch Adaptive Consensus Clustering) by simply setting `adaptiveFeature` as FALSE. 
 
-## Construct different clustering results by passing the ConsensusMatrix argument to IMPACC_cluster() function 
+###  Construct different clustering results by passing the ConsensusMatrix argument to IMPACC_cluster() function 
 ```{r}
 clus = IMPACC_cluster(ConsensusMatrix = impacc$ConsensusMatrix,K = 3)
 ```
 
-## Run MPACC with adaptive observation subsampling and random feature subsampling. 
+###  Run MPACC with adaptive observation subsampling and random feature subsampling. 
 ```{r}
 mpacc = IMPACC(d=yan$sc_cnt,K = K,adaptiveFeature = FALSE,verbose=FALSE)
 ```
 
 
-## Run MPCC with random minipatch subsampling. 
+###  Run MPCC with random minipatch subsampling. 
 ```{r}
 mpcc = MPCC(d=yan$sc_cnt,K = K,verbose=FALSE)
 ```
 
-## Run IMPACC with multinomial feature evaluation
+###  Run IMPACC with multinomial feature evaluation
 ```{r}
 impacc_multinomial = IMPACC(d=yan$sc_cnt,K = K,reps = 1,feature_evaluation = 'multinomial', verbose=FALSE)
 ```
