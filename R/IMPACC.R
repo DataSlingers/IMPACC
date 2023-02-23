@@ -99,7 +99,7 @@ MPCC <-function(d=NULL,
     }
     message('Done')
 
-    labels <-IMPACC_cluster(css=CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
+    labels <-IMPACC_cluster(ConsensusMatrix=CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
 
     return(list(ConsensusMatrix = CoAsso,labels = labels,nIter = i))
 }
@@ -342,7 +342,7 @@ IMPACC <-function(d=NULL,
 }
 
 
-IMPACC_cluster <-function(css=NULL,K=NULL,finalAlgorithm='hclust',finalLinkage='ward.D'){
+IMPACC_cluster <-function(ConsensusMatrix=NULL,K=NULL,finalAlgorithm='hclust',finalLinkage='ward.D'){
     return(tryCatch({
         if(finalAlgorithm=='hclust'){
             hc <-hclust(as.dist(1-css),method=finalLinkage)
