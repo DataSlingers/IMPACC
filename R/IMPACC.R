@@ -331,7 +331,6 @@ IMPACC <-function(d=NULL,
         }
     }
 
-    #heatmap(CoAsso)
     labels <- IMPACC_cluster(ConsensusMatrix=CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
     message('Done')
 
