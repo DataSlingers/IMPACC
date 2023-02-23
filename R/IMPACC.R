@@ -332,7 +332,7 @@ IMPACC <-function(d=NULL,
     }
 
     #heatmap(CoAsso)
-    labels  <- IMPACC_cluster(CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
+    labels <- IMPACC_cluster(ConsensusMatrix=CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
     message('Done')
 
     return(list(ConsensusMatrix = CoAsso,
@@ -345,15 +345,15 @@ IMPACC <-function(d=NULL,
 IMPACC_cluster <-function(ConsensusMatrix=NULL,K=NULL,finalAlgorithm='hclust',finalLinkage='ward.D'){
     return(tryCatch({
         if(finalAlgorithm=='hclust'){
-            hc <-hclust(as.dist(1-css),method=finalLinkage)
+            hc <-hclust(as.dist(1-ConsensusMatrix),method=finalLinkage)
             ct  <- cutree(hc,K)
         }else if (finalAlgorithm=='kmedoid'){
-            ct  <- cluster::pam(as.dist(1-css), K)$clustering
+            ct  <- cluster::pam(as.dist(1-ConsensusMatrix), K)$clustering
         }else if (finalAlgorithm=='spectral'){
-            ct <- SNFtool::spectralClustering(css, K)
+            ct <- SNFtool::spectralClustering(ConsensusMatrix, K)
         }
         return(ct)
-    }, error=function(e) NA))
+    }, error=function(e) 'Error in clusteirng with the consensus matrix '))
 }
 
 
