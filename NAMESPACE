@@ -1,4 +1,4 @@
-export(IMPACC,MPCC)
+export(IMPACC,MPCC,IMPACC_cluster)
 importFrom("stats", "as.dist", "cor", "cutree", "dist", "hclust",
                "na.omit", "pf", "quantile", "sd", "pchisq", "predict")
 import(mvtnorm)
