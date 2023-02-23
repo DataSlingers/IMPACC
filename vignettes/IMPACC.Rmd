@@ -24,8 +24,7 @@ opts_chunk$set(fig.align = 'center', fig.width = 6, fig.height = 5, dev = 'png')
 # Brief description of `IMPACC`
 IMPACC (Interpretable Minipatch Adaptive Consensus Clustering) is a powerful methodology for consensus clustering using minipatch learning with adaptive feature and observation sampling schemes. IMPACC offers interpretable results by discovering features that differentiate clusters. This method is particularly applicable to sparse, high-dimensional data sets common in bioinformatics. MPCC (MiniPatch Consensus Clustering) provides consensus clustering by subsampling a tiny fraction of both observations and features at each iteration.
 
-This package provide implementment of the `IMPACC` and  `MPCC` methods in R.
-
+IMPACC\cite{} implements the `IMPACC` and  `MPCC` method in R.
 
 # Tutorial 
 
@@ -49,11 +48,6 @@ impacc = IMPACC(d=yan$sc_cnt,K = K,reps = 100,verbose=FALSE)
 `IMPACC` returns a list containing ConsensusMatrix (numerical matrix),  labels (consensus class asssignments), feature_importance (feature), and nIter (stopping point).
 
 Users can run MPACC (Minipatch Adaptive Consensus Clustering) by simply setting `adaptiveFeature` as FALSE. 
-
-## Construct different clustering results by passing the ConsensusMatrix argument to IMPACC_cluster() function 
-```{r}
-clus = IMPACC_cluster(ConsensusMatrix = impacc$ConsensusMatrix,K = 3)
-```
 
 ## Run MPACC with adaptive observation subsampling and random feature subsampling. 
 ```{r}

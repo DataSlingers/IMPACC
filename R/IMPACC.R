@@ -99,7 +99,7 @@ MPCC <-function(d=NULL,
     }
     message('Done')
 
-    labels <-IMPACC_cluster(ConsensusMatrix=CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
+    labels <-IMPACC_cluster(css=CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
 
     return(list(ConsensusMatrix = CoAsso,labels = labels,nIter = i))
 }
@@ -332,7 +332,7 @@ IMPACC <-function(d=NULL,
     }
 
     #heatmap(CoAsso)
-    labels  <- IMPACC_cluster(ConsensusMatrix=CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
+    labels  <- IMPACC_cluster(CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
     message('Done')
 
     return(list(ConsensusMatrix = CoAsso,
@@ -342,23 +342,20 @@ IMPACC <-function(d=NULL,
 }
 
 
-IMPACC_cluster <-function(ConsensusMatrix=NULL,K=NULL,finalAlgorithm='hclust',finalLinkage='ward.D'){
-    if (is.null(ConsensusMatrix)|is.null(K)){
-        return('Need inputs')
-    }else{
+IMPACC_cluster <-function(css=NULL,K=NULL,finalAlgorithm='hclust',finalLinkage='ward.D'){
     return(tryCatch({
         if(finalAlgorithm=='hclust'){
-            hc <-hclust(as.dist(1-ConsensusMatrix),method=finalLinkage)
+            hc <-hclust(as.dist(1-css),method=finalLinkage)
             ct  <- cutree(hc,K)
         }else if (finalAlgorithm=='kmedoid'){
-            ct  <- cluster::pam(as.dist(1-ConsensusMatrix), K)$clustering
+            ct  <- cluster::pam(as.dist(1-css), K)$clustering
         }else if (finalAlgorithm=='spectral'){
-            ct <- SNFtool::spectralClustering(ConsensusMatrix, K)
+            ct <- SNFtool::spectralClustering(css, K)
         }
         return(ct)
     }, error=function(e) NA))
 }
-}
+
 
 ######### HELPER FUNCTIONS
 sampleBurin <- function(d,num_partition,
