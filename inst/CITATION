@@ -1,0 +1,21 @@
+citHeader("To cite IMPACC in publications, please use:")
+
+citEntry(entry = "ARTICLE",
+         title        = "Fast and interpretable consensus clustering via minipatch learning",
+         author       = personList(as.person("Luqin Gan"),
+                                   as.person("Genevera I. Allen")),
+         journal      = "PLoS Computational Biology",
+         url          = "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010577",
+         volume=18,
+         number=10,
+         pages=e1010577,
+         year=2022,
+         publisher= Public Library of Science San Francisco, CA USA
+         textVersion  =
+             paste("Luqin Gan, and Genevera I. Allen.",
+                   sQuote("Fast and interpretable consensus clustering via minipatch learning,"),
+                   "PLoS Computational Biology 18.10 (2022): e1010577,",
+                   "(https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010577)")
+)
+
+citFooter("Thank you for using IMPACC!")
