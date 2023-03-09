@@ -53,7 +53,7 @@ MPCC(d=NULL,
               verbose=TRUE)
 
 
-IMPACC_cluster(css=NULL,
+IMPACC_cluster(ConsensusMatrix=NULL,
               K=NULL,
               finalAlgorithm='hclust',
               finalLinkage='ward.D')
@@ -82,7 +82,7 @@ IMPACC_cluster(css=NULL,
   \item{seed}{optional numerical value.  sets random seed for reproducible results.}
   \item{verbose}{ boolean. If TRUE, print messages to the screen to indicate progress.  This is useful for large datasets.}
 
-  \item{css}{result of IMPACC/MPCC.}
+  \item{ConsensusMatrix}{result of IMPACC/MPCC.}
   \item{finalAlgorithm}{character value. cluster algorithm.  'hc' heirarchical (hclust), 'spec' for spectral clustering,'pam' for paritioning around medoids, 'km' for k-means upon data matrix, 'ap' for affinity propagation clustering, 'convex' for convex clustering or a function that returns a clustering.  See example and vignette for more details. }
   \item{finalLinkage}{heirarchical linkage method for consensus matrix. }
 
