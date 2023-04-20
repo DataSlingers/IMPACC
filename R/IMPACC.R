@@ -101,6 +101,21 @@ MPCC <-function(d=NULL,
 
     labels <-IMPACC_cluster(ConsensusMatrix=CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
 
+    myPal = function(n=10){
+        #returns n colors
+        seq = rev(seq(0,255,by=255/(n)))
+        palRGB = cbind(seq,seq,255)
+        rgb(palRGB,maxColorValue=255)
+    }
+    colBreaks=10
+    tmyPal = myPal(colBreaks)
+    order = order(labels) # Find a sorted order of the given labels
+    css=CoAsso[order, order]
+    heatmap(css,  scale='none',
+            col=tmyPal, na.rm=TRUE,labCol=F,main="consensus matrix")
+
+    message('Done')
+
     return(list(ConsensusMatrix = CoAsso,labels = labels,nIter = i))
 }
 
@@ -332,6 +347,19 @@ IMPACC <-function(d=NULL,
     }
 
     labels <- IMPACC_cluster(ConsensusMatrix=CoAsso,K=K,finalAlgorithm=finalAlgorithm,finalLinkage=finalLinkage)
+    myPal = function(n=10){
+        #returns n colors
+        seq = rev(seq(0,255,by=255/(n)))
+        palRGB = cbind(seq,seq,255)
+        rgb(palRGB,maxColorValue=255)
+    }
+    colBreaks=10
+    tmyPal = myPal(colBreaks)
+    order = order(labels) # Find a sorted order of the given labels
+    css=CoAsso[order, order]
+    heatmap(css,  scale='none',
+            col=tmyPal, na.rm=TRUE,labCol=F,main="consensus matrix")
+
     message('Done')
 
     return(list(ConsensusMatrix = CoAsso,
